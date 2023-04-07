@@ -5,11 +5,17 @@ export class UserDto {
   name: string;
 
   @ApiProperty()
+  affiliation: string;
+
+  @ApiProperty()
+  dateOfBirth: Date;
+
+  @ApiProperty()
+  cpf: string;
+
+  @ApiProperty()
   email: string;
 
   @ApiProperty()
   phone: string;
-
-  @ApiProperty()
-  password: string;
 }

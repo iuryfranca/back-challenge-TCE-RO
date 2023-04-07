@@ -16,7 +16,7 @@ export class AppService {
   }
 
   async find(userId: number): Promise<User> {
-    const { id, name, email, password, phone, status } =
+    const { id, name, affiliation, dateOfBirth, cpf, email, phone, status } =
       await this.userRepository.findOneBy({ id: userId });
 
     if (!id) {
@@ -26,29 +26,33 @@ export class AppService {
     const response: User = {
       id,
       name,
+      affiliation,
+      dateOfBirth,
+      cpf,
       email,
       phone,
-      password,
       status,
     };
 
     return response;
   }
 
-  async create(user: UserEntity): Promise<UserEntity> {
+  async create(user: User): Promise<UserEntity> {
     return await this.userRepository.save(user);
   }
 
   async update(userData: UserEntity): Promise<void> {
-    const { id, name, email, phone, password } = userData;
+    const { id, name, email, phone, affiliation, dateOfBirth, cpf } = userData;
     const user: User = await this.find(id);
 
     user.name = name ? name : user.name;
     user.email = email ? email : user.email;
     user.phone = phone ? phone : user.phone;
-    user.password = password ? password : user.password;
+    user.affiliation = affiliation ? affiliation : user.affiliation;
+    user.dateOfBirth = dateOfBirth ? dateOfBirth : user.dateOfBirth;
+    user.cpf = cpf ? cpf : user.cpf;
 
-    await this.userRepository.save(user as UserEntity);
+    await this.userRepository.save(user);
   }
 
   async delete(id: number): Promise<void> {

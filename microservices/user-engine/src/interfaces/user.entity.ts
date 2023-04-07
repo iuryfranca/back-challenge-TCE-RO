@@ -9,13 +9,19 @@ export class UserEntity extends BaseEntity {
   name: string;
 
   @Column()
+  affiliation: string;
+
+  @Column()
+  dateOfBirth: Date;
+
+  @Column()
+  cpf: string;
+
+  @Column()
   email: string;
 
   @Column()
   phone: string;
-
-  @Column()
-  password: string;
 
   @Column({ default: 'ACTIVATE' })
   status: 'ACTIVATE' | 'INACTIVATE';
