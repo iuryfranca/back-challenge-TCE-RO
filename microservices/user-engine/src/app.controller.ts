@@ -22,8 +22,30 @@ export class AppController {
 
   @MessagePattern('create-user')
   async create(@Payload() data: any): Promise<UserEntity> {
-    this.logger.log(`Users: ${JSON.stringify(data)}`);
+    this.logger.log(`create-user: ${JSON.stringify(data)}`);
 
     return await this.appService.create(data);
+  }
+
+  @MessagePattern('update-user')
+  async update(@Payload() data: any): Promise<void> {
+    this.logger.log(`update-user: ${JSON.stringify(data)}`);
+
+    await this.appService.update(data);
+  }
+
+  @MessagePattern('delete-user')
+  async remove(@Payload() data: any): Promise<void> {
+    return this.appService.delete(Number(data.id));
+  }
+
+  @MessagePattern('activate-user')
+  async activate(@Payload() data: any): Promise<void> {
+    return this.appService.activate(Number(data.id));
+  }
+
+  @MessagePattern('inactivate-user')
+  async inactivate(@Payload() data: any): Promise<void> {
+    return this.appService.inactivate(Number(data.id));
   }
 }

@@ -8,6 +8,9 @@ import {
   Post,
   OnModuleInit,
   Param,
+  Put,
+  Delete,
+  Patch,
 } from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -51,5 +54,37 @@ export class UsersController implements OnModuleInit {
   @ApiBody({ type: UserDto })
   create(@Body() user: UserDto) {
     return this.client.emit('create-user', user);
+  }
+
+  @Put(':id')
+  @ApiBody({ type: UserDto })
+  update(
+    @Param('id') id: number,
+    @Body() { name, email, phone, password }: UserDto,
+  ) {
+    const payload = {
+      id,
+      name,
+      email,
+      phone,
+      password,
+    };
+
+    return this.client.emit('update-user', payload);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.client.emit('delete-user', { id });
+  }
+
+  @Patch(':id/activate')
+  activate(@Param('id') id: number) {
+    return this.client.emit('activate-user', { id });
+  }
+
+  @Patch(':id/inactivate')
+  inactivate(@Param('id') id: number) {
+    return this.client.emit('inactivate-user', { id });
   }
 }
