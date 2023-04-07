@@ -1,7 +1,14 @@
 import { Client, Transport, ClientKafka } from '@nestjs/microservices';
 import { User } from './interfaces/user.interface';
 import { UserDto } from './dtos/user.dtos';
-import { Body, Controller, Get, Post, OnModuleInit } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  OnModuleInit,
+  Param,
+} from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 
@@ -22,7 +29,7 @@ export class UsersController implements OnModuleInit {
   })
   private client: ClientKafka;
   async onModuleInit() {
-    const requestPatters = ['find-all-users', 'create-user'];
+    const requestPatters = ['find-all-users', 'find-user'];
 
     requestPatters.forEach(async (pattern) => {
       this.client.subscribeToResponseOf(pattern);
@@ -35,9 +42,14 @@ export class UsersController implements OnModuleInit {
     return this.client.send('find-all-users', {});
   }
 
+  @Get(':id')
+  find(@Param('id') id: number): Observable<User> {
+    return this.client.send('find-user', { id });
+  }
+
   @Post()
   @ApiBody({ type: UserDto })
-  create(@Body() user: UserDto): Observable<User> {
-    return this.client.send('create-user', user);
+  create(@Body() user: UserDto) {
+    return this.client.emit('create-user', user);
   }
 }
