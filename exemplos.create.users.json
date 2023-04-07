@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Iury Teste",
+    "email": "iury@teste.com",
+    "phone": "99 9999-9999",
+    "password": "teste123"
+  },
+  {
+    "name": "Matheus Teste",
+    "email": "mathus@teste.com",
+    "phone": "99 6666-6666",
+    "password": "teste123"
+  }
+]
