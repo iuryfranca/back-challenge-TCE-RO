@@ -1,16 +1,23 @@
-import { Address } from './../interfaces/address.interface';
 import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-@ValidatorConstraint({ name: 'AddressValidator', async: false })
-export class AddressValidator implements ValidatorConstraintInterface {
-  validate(addressData: Address) {
-    return addressData.cep.length > 0;
+@ValidatorConstraint({ name: 'CepValidator', async: true })
+export class CepValidator implements ValidatorConstraintInterface {
+  async validate(addressData: string) {
+    const cepData: any = await fetch(
+      `https://viacep.com.br/ws/${addressData}/json`,
+    ).then((response) => response.json());
+
+    if (cepData.erro) {
+      return !cepData;
+    }
+
+    return cepData;
   }
 
   defaultMessage() {
-    return 'Endereço inválido, digite um que faça sentido! 😅';
+    return 'CEP inválido, digite um que faça sentido! 😅';
   }
 }
