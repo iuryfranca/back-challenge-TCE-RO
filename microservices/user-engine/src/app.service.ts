@@ -16,8 +16,17 @@ export class AppService {
   }
 
   async find(userId: number): Promise<User> {
-    const { id, name, affiliation, dateOfBirth, cpf, email, phone, status } =
-      await this.userRepository.findOneBy({ id: userId });
+    const {
+      id,
+      name,
+      affiliation,
+      dateOfBirth,
+      cpf,
+      email,
+      phone,
+      status,
+      address,
+    } = await this.userRepository.findOneBy({ id: userId });
 
     if (!id) {
       throw new Error();
@@ -32,6 +41,7 @@ export class AppService {
       email,
       phone,
       status,
+      address,
     };
 
     return response;
@@ -42,7 +52,8 @@ export class AppService {
   }
 
   async update(userData: UserEntity): Promise<void> {
-    const { id, name, email, phone, affiliation, dateOfBirth, cpf } = userData;
+    const { id, name, email, phone, affiliation, dateOfBirth, cpf, address } =
+      userData;
     const user: User = await this.find(id);
 
     user.name = name ? name : user.name;
@@ -51,6 +62,7 @@ export class AppService {
     user.affiliation = affiliation ? affiliation : user.affiliation;
     user.dateOfBirth = dateOfBirth ? dateOfBirth : user.dateOfBirth;
     user.cpf = cpf ? cpf : user.cpf;
+    user.address = address ? address : user.address;
 
     await this.userRepository.save(user);
   }

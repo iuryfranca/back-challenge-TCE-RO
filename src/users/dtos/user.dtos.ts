@@ -12,6 +12,8 @@ import {
   ValidationArguments,
   Validate,
 } from 'class-validator';
+import { Address } from '../interfaces/address.interface';
+import { AddressValidator } from '../validations/address.validation';
 
 export class UserDto {
   @IsNotEmpty({ message: 'Nome não pode ser vazio' })
@@ -51,4 +53,28 @@ export class UserDto {
   })
   @ApiProperty()
   phone: string;
+
+  @IsNotEmpty({ message: 'Rua não pode ser vazio' })
+  @ApiProperty()
+  street: string;
+
+  @IsNotEmpty({ message: 'Número da casa não pode ser vazio' })
+  @ApiProperty()
+  numberHouse: string;
+
+  @IsNotEmpty({ message: 'Bairro não pode ser vazio' })
+  @ApiProperty()
+  neighborhood: string;
+
+  @IsNotEmpty({ message: 'CEP não pode ser vazio' })
+  @ApiProperty()
+  cep: string;
+
+  @IsNotEmpty({ message: 'Cidade não pode ser vazio' })
+  @ApiProperty()
+  city: string;
+
+  @IsNotEmpty({ message: 'Estado não pode ser vazio' })
+  @ApiProperty()
+  state: string;
 }

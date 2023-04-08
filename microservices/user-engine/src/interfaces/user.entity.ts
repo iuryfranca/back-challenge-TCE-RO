@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import { Address } from './address.interface';
 
 @Entity()
 export class UserEntity extends BaseEntity {
@@ -25,4 +26,7 @@ export class UserEntity extends BaseEntity {
 
   @Column({ default: 'ACTIVATE' })
   status: 'ACTIVATE' | 'INACTIVATE';
+
+  @Column()
+  address: Address;
 }
