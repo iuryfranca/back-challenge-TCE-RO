@@ -1,5 +1,3 @@
-import { Address } from './address.interface';
-
 export interface User {
   id?: number;
   name: string;
@@ -9,5 +7,10 @@ export interface User {
   email: string;
   phone: string;
   status?: 'ACTIVATE' | 'INACTIVATE';
-  address: Address;
+  street: string;
+  numberHouse: string;
+  neighborhood: string;
+  cep: string;
+  city: string;
+  state: string;
 }

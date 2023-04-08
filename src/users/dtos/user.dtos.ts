@@ -12,8 +12,6 @@ import {
   ValidationArguments,
   Validate,
 } from 'class-validator';
-import { Address } from '../interfaces/address.interface';
-import { AddressValidator } from '../validations/address.validation';
 
 export class UserDto {
   @IsNotEmpty({ message: 'Nome não pode ser vazio' })

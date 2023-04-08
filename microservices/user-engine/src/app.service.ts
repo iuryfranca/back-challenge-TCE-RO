@@ -25,7 +25,12 @@ export class AppService {
       email,
       phone,
       status,
-      address,
+      street,
+      numberHouse,
+      neighborhood,
+      cep,
+      city,
+      state,
     } = await this.userRepository.findOneBy({ id: userId });
 
     if (!id) {
@@ -41,7 +46,12 @@ export class AppService {
       email,
       phone,
       status,
-      address,
+      street,
+      numberHouse,
+      neighborhood,
+      cep,
+      city,
+      state,
     };
 
     return response;
@@ -52,8 +62,21 @@ export class AppService {
   }
 
   async update(userData: UserEntity): Promise<void> {
-    const { id, name, email, phone, affiliation, dateOfBirth, cpf, address } =
-      userData;
+    const {
+      id,
+      name,
+      email,
+      phone,
+      affiliation,
+      dateOfBirth,
+      cpf,
+      street,
+      numberHouse,
+      neighborhood,
+      cep,
+      city,
+      state,
+    } = userData;
     const user: User = await this.find(id);
 
     user.name = name ? name : user.name;
@@ -62,7 +85,12 @@ export class AppService {
     user.affiliation = affiliation ? affiliation : user.affiliation;
     user.dateOfBirth = dateOfBirth ? dateOfBirth : user.dateOfBirth;
     user.cpf = cpf ? cpf : user.cpf;
-    user.address = address ? address : user.address;
+    user.street = street ? street : user.street;
+    user.numberHouse = numberHouse ? numberHouse : user.numberHouse;
+    user.neighborhood = neighborhood ? neighborhood : user.neighborhood;
+    user.cep = cep ? cep : user.cep;
+    user.city = city ? city : user.city;
+    user.state = state ? state : user.state;
 
     await this.userRepository.save(user);
   }

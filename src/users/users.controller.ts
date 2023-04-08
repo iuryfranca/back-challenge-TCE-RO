@@ -60,7 +60,21 @@ export class UsersController implements OnModuleInit {
   @ApiBody({ type: UserDto })
   update(
     @Param('id') id: number,
-    @Body() { name, email, phone, affiliation, dateOfBirth, cpf }: UserDto,
+    @Body()
+    {
+      name,
+      email,
+      phone,
+      affiliation,
+      dateOfBirth,
+      cpf,
+      street,
+      numberHouse,
+      neighborhood,
+      cep,
+      city,
+      state,
+    }: UserDto,
   ) {
     const payload = {
       id,
@@ -70,6 +84,12 @@ export class UsersController implements OnModuleInit {
       affiliation,
       dateOfBirth,
       cpf,
+      street,
+      numberHouse,
+      neighborhood,
+      cep,
+      city,
+      state,
     };
 
     return this.client.emit('update-user', payload);
