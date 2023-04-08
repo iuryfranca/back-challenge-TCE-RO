@@ -1,7 +1,10 @@
 export interface User {
-  id: number;
+  id?: number;
   name: string;
+  affiliation: string;
+  dateOfBirth: Date;
+  cpf: string;
   email: string;
   phone: string;
-  password: string;
+  status?: 'ACTIVATE' | 'INACTIVATE';
 }
