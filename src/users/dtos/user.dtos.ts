@@ -1,4 +1,4 @@
-// import { CpfValidator } from './../validations/cpf.validation';
+import { CpfValidator } from './../validations/cpf.validation';
 import {
   BadRequestException,
   InternalServerErrorException,
@@ -28,7 +28,7 @@ export class UserDto {
   dateOfBirth: Date;
 
   @IsNotEmpty({ message: 'CPF não pode ser vazio' })
-  // @Validate(CpfValidator)
+  @Validate(CpfValidator)
   @ApiProperty()
   cpf: string;
 
