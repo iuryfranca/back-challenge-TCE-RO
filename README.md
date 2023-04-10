@@ -51,8 +51,8 @@ $ git clone https://github.com/iuryfranca/back-challenge-TCE-RO.git
 # Install dependencies
 $ yarn install
 
-# Run docker
-$ docker compose up
+# Run docker (is required)
+$ docker compose up -d
 
 # Run the project
 $ yarn start:dev
