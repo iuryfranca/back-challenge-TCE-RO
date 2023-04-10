@@ -17,7 +17,15 @@
 
 ## :dart: About
 
-Olá, tudo bem? aqui é o Iury e esse é o projeto back-end do desafio para o projeto da creche do IFRO. Essa parte de back and eu não tenho muita experiência, mas consegui me virar ali no 30 para aprender e fazer o necessário, a API é local e o banco de conexão é o postgress, foi implementado OPen API, basta entar no localhost/api. A api é capaz de criar, editar, excluit e listr usuários cadastrados, com validações e modulos, sendo o principal o modulo de coneção e ligamente com o modulo de usuários (microservices). O [FrontEnd](https://github.com/iuryfranca/front-challenge-TCE-RO/) é quem ficou responsavel por parte grafica de de interface do projeto! Espero que tenham gostado :)
+Olá, tudo bem? aqui é o Iury e esse é o projeto back-end do desafio para o projeto da creche do IFRO. Essa parte de back and eu não tenho muita experiência, mas consegui me virar ali no 30 para aprender e fazer o necessário: 
+
+- Banco de conexão usado foi o postgres
+- Open API implementado na url http://localhost:3333/api
+- Módulo de User e Principal separados (microserviços) possibilitando mais modulos posteriotmente
+- Possui validações padõres fornecidas pelo framework + validação customizadas para casos específicos
+- API caáz de listar todos os cadastros, listar cadastro específico, criar, editar e excluir
+
+O [FrontEnd](https://github.com/iuryfranca/front-challenge-TCE-RO/) é quem ficou responsavel por parte grafica de de interface do projeto! Espero que tenham gostado :)
 
    
     
