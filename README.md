@@ -52,6 +52,7 @@ $ git clone https://github.com/iuryfranca/back-challenge-TCE-RO.git
 $ yarn install
 
 # Run docker (is required)
+# Postgres image running (is required)
 $ docker compose up -d
 
 # Run the project
