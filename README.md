@@ -58,5 +58,10 @@ $ docker compose up -d
 # Run the project
 $ yarn start:dev
 
+# Run the microservices
+$ cd .\microservices\user-engine\
+$ yarn start:dev
+
+
 # The server will initialize in the <http://localhost:3000>
 ```
